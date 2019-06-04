@@ -1,0 +1,71 @@
+% Источник: Battle of the Giants, Yekaterinburg, 2013.05.01, problem J
+
+\begin{problem}{Копилка}
+{piggybank.in}{piggybank.out}
+{1 секунда}{256 мегабайт}{}
+
+Дракон хранит свои сбережения в копилке.
+Каждый день Дракон или кладёт ровно один доллар в копилку,
+или берёт из копилки сколько-то денег.
+Дракону интересно, могут ли его сбережения стать значительно больше,
+если бы он вкладывал в копилку больше.
+
+Говоря более точно, Дракон задаёт вам серию вопросов: 
+``Если вкладывать в копилку дополнительных $z$ долларов каждый день,
+каково максимальное количество денег в копилке в период с дня $a$ по день $b$?''
+
+
+% The Dragon stores his savings in a piggybank. For several days the following procedure took place. Each
+% day the Dragon either put exactly one dollar into the piggybank or took a nonnegative integer amount of
+% money from the piggybank. Now the Dragon wonders whether his savings could have been substantially
+% larger if he had put more money into the piggybank.
+% More precisely, the Dragon asks himself the following type of questions: “If I decided to put an additional
+% z dollars into the piggybank each day since the day number a, how large would have the largest amount
+% of money in the period between days a and b been?” Help the Dragon resolve such scenarios.
+
+\InputFile
+
+Первая строка содержит числа $n$ и $m$ ($1 \le n, m \le 500\,000$) -- число дней и количество вопросов.
+Следующая строка содержит $n$ целых чисел $s_1, s_2, \dots, s_n$ -- количество денег 
+в копилке после $i$-го дня ($0 \le s_i \le s_{i-1}+1, s_0 = 0$).
+Следующие $m$ строк содержат тройки чисел $a_i, b_i, z_i \colon 1 \le a_i \le b_i \le n$ и $1 \le z_i \le 10^9$.
+Учтите, что Дракон не властен над временем, поэтому каждый запрос нужно обрабатывать независимо от остальных,
+используя исходную последовательность $s$.
+
+% The first line of the input contains two integers n and m (1 ≤ n, m ≤ 500 000), the number of days
+% in the entire considered period of time and the number of queries. The second line contains n integers
+% s1, s2, . . . , sn that represent the amount of money in the piggybank after each day (0 ≤ si ≤ si−1 + 1,
+% and s0 = 0).
+% m lines follow. The i-th of those lines describes a single query: three integers ai
+% , bi and zi (1 ≤ ai ≤ bi ≤ n,
+% 1 ≤ zi ≤ 109
+% ) that represent the interval of days on which additional saving takes place and the amount
+% of money saved each day. Note that the Dragon cannot alter the past and therefore each query should
+% be considered separately.
+
+\OutputFile
+
+Выведите $m$ строк, содержащие ответы на вопросы.
+
+% Output m lines with answers to the respective queries. Each line should contain a single integer: the
+% largest amount of money in the piggybank between the days number ai and bi provided that the Dragon
+% has decided to put zi more dollars into the piggybank on each of those days.
+
+\Examples
+
+\begin{example}
+\exmp{
+9 3
+1 2 1 2 3 4 1 2 0
+1 9 1
+5 7 4
+4 4 2
+}{
+10
+13
+4
+}%
+\end{example}
+
+\end{problem}
+

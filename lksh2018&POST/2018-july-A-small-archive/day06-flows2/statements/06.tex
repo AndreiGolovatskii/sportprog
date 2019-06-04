@@ -1,0 +1,111 @@
+\documentclass[12pt,a4paper,oneside]{article}
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[russian]{olymp}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{epigraph}
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{color}
+\usepackage{lastpage}
+\usepackage{import}
+\usepackage{verbatim}
+
+\def\ID{6}
+\def\NAME{День \NO{\ID}, Потоки-2}%
+\def\WHERE{ЛКШ.2018.Июль, Берендеевы Поляны}%
+\def\DATE{10 июля 2018}%
+
+\renewcommand{\t}{\texttt}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+
+\binoppenalty=10000
+\relpenalty=10000
+\exhyphenpenalty=10000
+
+\newcommand{\ProblemLabel}{undefined}
+\newcommand{\ProblemTL}{undefined}
+\newcommand{\ProblemML}{undefined}
+\newcommand{\ProblemName}{undefined}
+
+\newcommand{\q}[1]{\langle #1 \rangle}
+\newcommand\NO[1]{\t{\##1}}
+\def\O{\mathcal{O}}
+\def\EPS{\varepsilon}
+\def\SO{\Rightarrow}
+\def\EQ{\Leftrightarrow}
+\def\t{\texttt}
+\def\XOR{\text{ {\raisebox{-2pt}{\ensuremath{\Hat{}}}} }}
+\def\LINE{\vspace*{-1em}\noindent \underline{\hbox to 1\textwidth{{ } \hfil{ } \hfil{ } }}}
+
+\def\probl#1#2#3#4{
+  \renewcommand{\ProblemName}{#1}
+  \renewcommand{\ProblemLabel}{#2}
+  \renewcommand{\ProblemTL}{#3}
+  \renewcommand{\ProblemML}{#4}
+  \input ../problems/#2.#1.tex
+}
+          
+\newcommand{\Section}[2]{
+  \hbox{\hspace{1em}}
+  \vspace*{-2.5em}
+  \section*{\color{#1}{#2}}
+  \addcontentsline{toc}{section}{\color{#1}{#2}}
+  \vspace*{-0.5em}
+}
+
+\def\myindent{\hspace*{\parindent}\unskip}
+
+\contest
+{\NAME}%
+{\WHERE}%
+{\DATE}%
+
+%\sectionfont{\fontsize{8}{8}\selectfont}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{brown}{rgb}{0.5,0.5,0}
+
+\def\compact{
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt}
+}
+
+\begin{document}
+
+\vspace*{-2.8em}
+
+\tableofcontents
+
+\vspace*{0.8em}
+\LINE
+\vspace*{0.8em}
+
+\noindent{}В некоторых задачах большой ввод и вывод. 
+Пользуйтесь \href{https://ejudge.lksh.ru/A/lib/example_io.cpp.html}{быстрым вводом-выводом}.
+
+\vspace{0.6em}
+\noindent{}В некоторых задачах нужен STL, который активно использует динамическую память (set-ы, map-ы)
+\href{https://ejudge.lksh.ru/A/lib/example_mem.cpp.html}{переопределение стандартного аллокатора} ускорит вашу программу.
+
+\pagebreak
+
+\Section{red}{Задачи}
+
+\probl{mincost}{A}{0.05 sec}{256 mb} % 0.007
+\probl{brides}{B}{0.1 sec}{256 mb} % 0.023
+\probl{assignment}{C}{1.5 sec}{256 mb} % 0.663
+\probl{flow2}{D}{0.1 sec}{256 mb} % 0.038
+
+\Section{red}{Гробы}
+
+\probl{matching}{E}{3 sec}{256 mb} % 1.5
+\probl{credit}{F}{0.1 sec}{256 mb} % 0.007
+
+\end{document}

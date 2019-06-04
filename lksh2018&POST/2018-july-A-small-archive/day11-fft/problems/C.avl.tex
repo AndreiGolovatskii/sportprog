@@ -1,0 +1,78 @@
+\begin{problem}{АВЛ-деревья}{avl.in}{avl.out}{5 секунд}{256 мегабайт}
+%\begin{problem}{AVL Trees}{avl.in}{avl.out}{5 seconds}{256 megabytes}
+
+% Author: Andrew Stankevich
+
+АВЛ-дерево --- сбалансированное по высоте двоичное дерево поиска:
+для каждой его вершины высота её двух поддеревьев различается не более чем на 1.
+АВЛ-деревья названы по первым буквам фамилий их изобретателей,
+Г. М. Адельсона-Вельского и Е. М. Ландиса.
+%AVL trees invented by Russian scientists Adelson-Velskiy and Landis are used
+%for \emph{sorted collection} data structure. The rooted binary tree is 
+%called \emph{balanced} if for each vertex the height of its left subtree
+%and the height of its right subtree differ by at most one. The balanced
+%binary search tree is called the AVL tree.
+
+Для фиксированного количества вершин может существовать несколько АВЛ-деревьев.
+Например, существует шесть АВЛ-деревьев, состоящих из пяти вершин.
+%There can be several AVL trees with the given number of vertices. For example,
+%there are 6 AVL trees with 5 vertices, they are shown on the picture below.
+
+\begin{center}
+\includegraphics{pics/avl.1}\hspace{0.5cm}
+\includegraphics{pics/avl.2}\hspace{0.5cm}
+\includegraphics{pics/avl.3}\hspace{0.5cm}
+\includegraphics{pics/avl.4}\hspace{0.5cm}
+\includegraphics{pics/avl.5}\hspace{0.5cm}
+\includegraphics{pics/avl.6}
+\end{center}
+
+Также деревья с одинаковым количеством вершин могут иметь различную высоту.
+Например, существуют деревья из семи вершин с высотами 2 и 3 соответственно.
+%Also the tree with the given number of vertices can have different height,
+%the picture below shows AVL trees with 7 vertices that have height 2 and 3,
+%respectively. 
+
+\begin{center}
+\includegraphics{pics/avl.7}\hspace{0.5cm}
+\includegraphics{pics/avl.8}
+\end{center}
+
+Требуется по заданным $n$ и $h$ найти количество АВЛ-деревьев, состоящих из
+$n$ вершин и имеющих высоту $h$. Так как ответ может быть очень большим,
+требуется найти остаток от деления искомого количества на 786433.
+%Given $n$ and $h$ find the number of AVL trees that have $n$ vertices and
+%height $h$. Since the answer can be quite large, return the answer
+%modulo $786\,433$.
+
+\InputFile
+
+Во входном файле даны числа $n$ и $h$ ($1 \le n \le 65535$,
+%Input file contains $n$ and $h$ ($1 \le n \le 65\,535$,
+$0 \le h \le 15$).
+
+\OutputFile
+
+Выведите одно число --- остаток от деления количества АВЛ-деревьев,
+состоящих из $n$ вершин и имеющих высоту $h$, на 786433.
+%Output one number --- the number of AVL trees with $n$ vertices that have 
+%height $h$, modulo $786\,433$. 
+
+\Example
+
+\begin{example}
+\exmp{
+7 3
+}{
+16
+}%
+\end{example}
+\bigskip
+
+\Note
+
+786433 --- простое число, $786433 = 3 \cdot 2^{18} + 1$.
+%Note that $786\,433$ is prime, and $786\,433 = 3 \cdot 2^{18} + 1$.
+
+\end{problem}
+

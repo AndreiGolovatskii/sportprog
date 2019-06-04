@@ -1,0 +1,18 @@
+$ ЛКШ.2018.Июль Спецкурс по С++.STL и C++.фичи
+
+# debug
+## #define \_GLIBCXX\_DEBUG (vector: [] &rarr; at)
+## везде использовать вектора
+## -Wall, -Wextra, -Wshadow, -Wconversion
+## Компилировать вегда без варнингов
+## Бесячие варнинги можно вырезать так -Wno-unused-result (муть со scanf), -Wno-deprecated-declarations (муть с printf, puts)
+
+<br>
+# optimization: #pragma GCC optimize("Ofast,sse4")
+
+<br>
+# Заменяем все циклы for на STL
+## fill, copy
+## rotate, reverse
+## min\_element, max\_element, nth\_element
+## partial\_sum(a,a+n,a)

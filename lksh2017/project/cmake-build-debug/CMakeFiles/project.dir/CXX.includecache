@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Inform/lksh/project/main.cpp
+vector
+-
+iostream
+-
+cstdlib
+-
+map
+-
+queue
+-
+algorithm
+-
+bits/stdc++.h
+-
+

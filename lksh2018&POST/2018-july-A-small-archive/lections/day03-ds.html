@@ -1,0 +1,55 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>План лекций</title>
+  <link href=styles/styles.css rel="stylesheet" type="text/css">
+</head>
+<h2>ЛКШ 2018, 3-й день, Больше структур данных Богу структур данных (Сергей Копелиович)</h2>
+<ol>
+  <li>Persistent: сборка мусора</li>
+  <ol>
+    <li>Задача: копирование памяти</li>
+    <li>Варианты сборки: стек, список</li>
+<br>
+  </ol></li>
+  <li>ETT = Euler-Tour-Tree (Acyclic Dynamic Connectivity Online)</li>
+  <ol>
+    <li>Подробно про реализацию, так как будет задача в контесте</li>
+<br>
+  </ol></li>
+  <li>Link-Cut-Tree</li>
+  <ol>
+    <li>Expose, потенциал, logn вызовов split/merge</li>
+    <li>MakeRoot, Link, Cut функция на пути</li>
+<br>
+  </ol></li>
+  <li>Splay деревья</li>
+  <ol>
+    <li>Операция Splay, выражение через неё Split, Merge, Add, Del</li>
+    <li><i><span style="color: blue;">[skipped] </span>Доказательство времени работы 3(log R(v) - log R(u)) + 1</i></li>
+    <li><i><span style="color: blue;">[skipped] </span>Доказательство времени работы &sum; k(v) (log (m / k(v)) + 1)</i></li>
+    <li>Использование в Link-Cut : суммарное время Expose = O(logn)</li>
+<br>
+  </ol></li>
+  <li>Корневая</li>
+  <ol>
+    <li>split/rebuild, split/merge на примере reverse/insert</li>
+    <li>отложенные операции (lazy propagation) на примере сортированного массива</li>
+<br>
+  </ol></li>
+  <li>DCP Offline</li>
+  <ol>
+    <li>Удаления можно свести к добавлениям, получили решение с DSU за log<sup>2</sup></li>
+    <li>Корневая по запросам за O(m<sup>3/2</sup>)</li>
+    <li><i><span style="color: blue;">[skipped] </span>DCP Offline за O(mlogm)</i></li>
+<br>
+  </ol></li>
+  <li><i><span style="color: blue;">[skipped] </span>Дополнительно: ещё про деревья</i></li>
+  <ol>
+    <li><i><span style="color: blue;">[skipped] </span>HLD</i></li>
+    <li><i><span style="color: blue;">[skipped] </span>Centroid (и минимум на пути за O(1))</i></li>
+    <li><i><span style="color: blue;">[skipped] </span>Сливаемые множества</i></li>
+<br>
+  </ol></li>
+  <li><i><span style="color: blue;">[skipped] </span>2D-деревья</i></li>
+  <li><i><span style="color: blue;">[skipped] </span>Мо</i></li>
+</ol>

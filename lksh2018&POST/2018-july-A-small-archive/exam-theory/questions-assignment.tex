@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+
+\usepackage{polyglossia}
+
+\usepackage{amsmath, amssymb}
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref}
+%\usepackage[russian]{hyperref}
+\usepackage{datetime}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{hologo}
+%\usepackage{minted}
+%\usepackage{unicode-math}
+\usepackage{color}
+
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\dkgreen}[1]{{\color{dkgreen}{#1}}}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{CMU Serif}  
+\setsansfont[Mapping=tex-text]{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}  
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+
+\makeatletter
+\renewcommand{\@oddfoot}{}
+\renewcommand{\@oddhead}{}
+
+\sloppy
+% \voffset=-30mm
+% \textheight=250mm
+% \hoffset=-27mm
+% \textwidth=185mm
+\voffset=-30mm
+\textheight=250mm
+\hoffset=-27mm
+\textwidth=185mm
+
+% Основные математические символы
+\def\EPS{\varepsilon}    %
+\def\SO{\Rightarrow}     % =>
+\def\EQ{\Leftrightarrow} % <=>
+\def\t{\texttt}          %
+\def\O{\mathcal{O}}      %
+\def\NO{\t{\#}}          % #
+\newcommand{\q}[1]{\langle #1 \rangle}               % <x>
+\newcommand\URL[1]{{\footnotesize{\url{#1}}}}        %
+\newcommand{\sfrac}[2]{{\scriptstyle\frac{#1}{#2}}}  % Очень маленькая дробь
+\newcommand{\mfrac}[2]{{\textstyle\frac{#1}{#2}}}    % Небольшая дробь
+
+% Отступы
+\def\makeparindent{\hspace*{\parindent}}
+\def\myindent{\hspace*{\parindent}}
+\def\up{\vspace*{-\baselineskip}}
+\def\down{\vspace*{\baselineskip}}
+\def\LINE{\vspace*{-1em}\noindent \underline{\hbox to 1\textwidth{{ } \hfil{ } \hfil{ } }}}
+
+\newcommand{\ITEM}[1]{{\bf \underline{#1}}\hspace{0.5em}}
+\newcommand{\Section}{\vspace{3em}\refstepcounter{section}\section*{Билет \NO{\arabic{section}}}\myindent\unskip\hspace{-2em}}
+
+\newcounter{myenumi}
+\setcounter{myenumi}{0}
+
+\newenvironment{MyList}{
+  \begin{enumerate}[1.]
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{2pt}
+  \setcounter{enumi}{\arabic{myenumi}}
+}{
+  \setcounter{myenumi}{\arabic{enumi}}
+  \end{enumerate}
+}
+\newenvironment{InnerMyList}{
+  \vspace*{-0.5em}
+  \begin{enumerate}[a)]
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt}
+}{
+  \end{enumerate}
+}
+
+\def\Header#1{
+  \vspace*{0.1em}
+  {\color{blue} \large \bf #1}
+  \vspace*{0.2em}
+}
+
+\definecolor{darkgreen}{rgb}{0, 0.6, 0}
+\definecolor{darkred}{rgb}{0.8, 0, 0}
+\definecolor{brown}{rgb}{0.5, 0.5, 0}
+                                
+\def\Hard{{\color{darkred} \bf (c) }}
+\def\Medium{{\color{brown} \bf (b) }}
+\def\Easy{{\color{darkgreen} \bf (a) }}
+
+\newenvironment{Ticket}{
+  \begin{enumerate}
+  \setlength{\parskip}{-5pt}
+  \setlength{\itemsep}{5pt}
+}{
+  \end{enumerate}
+}
+
+\begin{document}
+
+\definecolor{darkgreen}{rgb}{0, 0.6, 0}
+\definecolor{darkred}{rgb}{0.8, 0, 0}
+\definecolor{brown}{rgb}{0.5, 0.5, 0}
+
+\def\SSS{{\color{red} \bf (5) }}
+\def\SS{{\color{darkgreen} \bf (4) }}
+\def\S{{\color{blue} \bf (3) }}
+
+\def\Header#1{
+  \vspace*{0.2em}
+  {\color{blue} \large \bf #1}
+  \vspace*{-0.3em}
+}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Дерево отрезков с операциями снизу. Выражение \t{+=} на отрезке через изменение в точке. 
+  \item[\SS] Потоки: основные определения, теорема и алгоритм Форда-Фалкерсона.
+  \item[\SSS] Суффиксное дерево Укконеном за $\O(n)$. Массив $\leftrightarrow$ дерево за $\O(n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Sparse table. Disjoint версия. Улучшение до $\q{n \log\log n, 1}$ и $\q{n, \log\log n}$.
+  \item[\SS] Алгоритмы для выпуклых многоугольников: локализация точки, поиск опорной прямой, пересечение с прямой, поиск касательных от точки, расстояние от точки; всё за $\O(\log n)$.
+  \item[\SSS] Mincost circultation: сведенией к ней k-flow, алгоритм Клейна, capacity scaling. Mincost-LR-flow.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Число различных на отрезке, $k$-я статистика на отрезке.
+  \item[\SS] Алгоритм Эдмондса-Карпа. Масштабирование. 
+  \item[\SSS] Комплексные числа. FFT: прямое и обратное. Двоичная арифметика: mul/div/gcd.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Персистентность: стек, дерево отрезков, декартово дерево, СНМ. 
+  \item[\SS] LR-циркуляция, LR-поток.
+  \item[\SSS] Динамическая выпуклая оболочка: добавление и опорные прямые за $\O(\log n)$; \\ 
+              Динамическая выпуклая оболочка: добавление и удалениe за $\O(\log^3n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Корневая: split/rebuild, split/merge, отложенные операции. 
+  \item[\SS] Алгоритм Диница. Диниц с масштабированием. Диниц с link-cut.
+  \item[\SSS] Динамическая выпуклая оболочка: добавление и опорные прямые за $\O(\log n)$; \\ 
+              Динамическая выпуклая оболочка: добавление и удалениe за $\O(\log^3n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] ДО отсортированных массивов. Частичное каскадирование для дерева и массива. 
+  \item[\SS] Mincost k-flow: решение Форд-Беллманом, Дейкстрой с потенциалами. Алгоритм Джонсона.
+  \item[\SSS] Очередь и дек с минимумом. Персистентная очередь за $\O(1)$. 
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Две самые дальние. Общая касательная двух многоугольников за $\O(n+m)$.
+  \item[\SS] RMQ $\to$ LCA $\to$ RMQ${\pm}1$, решение последнего за $\q{n, 1}$. 
+  \item[\SSS] Теорема Карзанова. Хопкрофт-Карп. Диниц на единичных сетях.\\
+    Выбор k непересекающихся $\nearrow$ подпосл-тей $\max$ суммарной длины.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Сжатый и не сжатый бор -- способы хранения. Алгоритм Ахо-Корасика. \\ Задача: для каждого словарного слова найти количество вхождений в текст. 
+  \item[\SS] Алгоритм Мо. 3D Мо (запросы изменения). Избавление от log n в некоторых задачах. \\
+    Задача: mex на отрезке с изменением за $\O(n^{2/3})$.
+  \item[\SSS] Теорема Карзанова. Хопкрофт-Карп. Диниц на единичных сетях. 
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Суффиксный массив за $\O(n \log n)$. LCP за $\O(n)$. 
+  \item[\SS] Splay-дерево. Доказательство времени работы.
+  \item[\SSS] Сканирующая прямая: локализация точки в произвольном многоугольнике. \\ Сумма в полуплоскости в online за $\O(\log n)$ и $\O(\sqrt{n}\log n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Рюкзак на отрезке. Рюкзак, когда предметов веса $w_i$ можно брать $c_i$. Рюкзак за $\O(s \sqrt s)$. 
+  \item[\SS] Оптимизация разделяй и властвуй за $\O(kn \log n)$, оптимизация Кнута за $\O((k+n)n)$. \\ 
+            Пример задачи: разбить $n$ точек на $k$ отрезков, минимизируя сумму квадратов длин. 
+  \item[\SSS] Link-cut. Доказательство времени $\O(n \log^2 n)$, $\O(n \log n)$. 
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Сумма Минковского, вычисление за $\O(n + m)$. \\ Применение: расстояние между выпуклыми многоугольниками. 
+  \item[\SS] Convex hull trick, лямбда-оптимизация. Пример задачи: разбить $n$ точек на $k$ отрезков, минимизируя сумму квадратов длин. $\O(nk \log n)$, улучшение до $\O(nk)$. 
+  \item[\SSS] Комплексные числа. FFT: прямое и обратное. Вычисление по произвольному модулю. Два в одном.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Игры. Ацикличный граф через DP. Граф с циклами и длина игры через ретроанализ. $\alpha\beta$-отсечение.
+  \item[\SS] LA за $\q{n, \log n}$ (Вишкин), за $\q{n \log n, 1}$ (лестничная декомпозиция).
+  \item[\SSS] Link-cut. Доказательство времени $\O(n \log^2 n)$, $\O(n \log n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Для каждого множества посчитать сумму по подмножествам. Обратная задача. % Многомерные префиксные суммы. 
+  \item[\SS] DCP в offline за $\O(m^{3/2})$, за $\O(m \log^2 m)$, за $\O(m \log m)$.
+  \item[\SSS] Сканирующая прямая: локализация точки в произвольном многоугольнике. \\ Сумма в полуплоскости в online за $\O(\log n)$ и $\O(\sqrt{n}\log n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Гамильтонов путь за $\O(2^n n)$. Сумма элементов для каждого множества за $\O(2^n)$. 0-1-игра на дереве.
+  \item[\SS] Вычисление Функции Гранди за $\O(E)$. Ним. Прямая сумма игр с доказательством.
+  \item[\SSS] Очередь и дек с минимумом. Персистентная очередь за $\O(1)$. memmove за $\O(\log n)$.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Sparse table. Disjoint версия. Улучшение до $\q{n \log\log n, 1}$ и $\q{n, \log\log n}$.
+  \item[\SS] Алгоритм Диница. Масштабирование. Диниц с link-cut.
+  \item[\SSS] Комплексные числа. FFT: прямое и обратное. Поиск шаблона с вопросами в тексте.
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Для каждого множества посчитать сумму по подмножествам. Обратная задача. % Многомерные префиксные суммы. 
+  \item[\SS] Convex hull trick. Пример задачи: разбить $n$ точек на $k$ отрезков, минимизируя сумму квадратов длин. $\O(nk \log n)$, улучшение до $\O(nk)$. Дерево Ли-Чао. (dynamic convex hull trick). 
+  \item[\SSS] Теорема Карзанова. Хопкрофт-Карп. Диниц на единичных сетях. 
+\end{Ticket}
+}}
+
+\Section
+\fbox{\parbox{\textwidth}{
+\begin{Ticket}
+  \item[\S] Рюкзак на отрезке. Рюкзак, когда предметов веса $w_i$ можно брать $c_i$. Рюкзак за $\O(s \sqrt s)$.
+  \item[\SS] Splay-дерево. Доказательство времени работы. Площадь $\cup$ прямоугольников.
+  \item[\SSS] Дерево палиндромов, число различных палиндромов. Суффиксные массив $\leftrightarrow$ дерево за $\O(n)$.
+\end{Ticket}
+}}
+
+
+\end{document}

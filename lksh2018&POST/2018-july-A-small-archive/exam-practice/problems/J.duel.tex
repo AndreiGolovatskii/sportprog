@@ -1,0 +1,71 @@
+\begin{problem}{Дуэль}{duel.in}{duel.out}{3 секунды}{256 мегабайт}
+%\begin{problem}{Duel (Div. 2)}{duel.in}{duel.out}{3 секунды}{256 мегабайт}
+
+%Author: Andrew Stankevich
+
+Двое дуэлянтов решили выбрать в качестве места проведения поединка тёмную аллею.
+%Alex and his rival George are preparing for the duel because of fair lady Nathalie. The duel
+%will take place at a dark alley.
+Вдоль этой аллеи растёт $n$ деревьев и кустов.
+Расстояние между соседними объектами равно одному метру.
+Дуэль решили проводить по следующим правилам.
+Некоторое дерево выбирается в качестве стартовой точки.
+Затем два дерева, находящихся на одинаковом расстоянии от исходного,
+отмечаются как места для стрельбы.
+Дуэлянты начинают движение от стартовой точки в противоположных направлениях.
+Когда соперники достигают отмеченных деревьев, они разворачиваются и начинают
+стрелять друг в друга.
+%The alley has $n$ trees and bushes growing along, the distance between adjacent plants is one meter. Alex and George decided
+%that the duel will proceed as follows. Some tree is selected as the starting point and marked accordingly.
+%Two trees at equal distance from the starting tree are marked as shooting points. Alex and George will start
+%at the starting tree and move in opposite directions. When they reach shooting trees they will turn around
+%and shoot at each other.
+
+Дана схема расположения деревьев вдоль аллеи.
+Требуется определить количество способов выбрать
+стартовую точку и места для стрельбы согласно правилам дуэли.
+%Given the positions of the trees, help Alex and George find the starting tree and shooting trees. First the duelists
+%would like to know the number of ways they can choose the trees.
+
+\InputFile
+
+Во входном файле содержится одна строка, состоящая из символов `\t{0}' и `\t{1}'
+--- схема аллеи.
+Деревья обозначаются символом `\t{1}', кусты --- символом `\t{0}'.
+Длина строки не превосходит $100\,000$ символов.
+%Input file contains a non-empty string of 0-s and 1-s that describes the alley, 0 stands for the bush (that is not
+%suitable to be neither starting nor shooting point), 1 stands for the tree. The length of the string
+%doesn't exceed~$100\,000$.
+
+\OutputFile
+
+Выведите количество способов выбрать
+стартовую точку и места для стрельбы согласно правилам дуэли.
+%Output the number of ways the duelists can choose starting and shooting trees.
+
+\Examples
+
+\begin{example}%
+\exmp{
+101010101
+}{
+4
+}%
+\exmp{
+101001
+}{
+0
+}%
+\end{example}
+\bigskip
+
+В первом примере возможны следующие конфигурации дуэли
+(стартовое дерево и деревья для стрельбы выделены жирным шрифтом):
+%In the first example the following configurations of the duel are possible (starting and shooting trees are marked as bold):
+{\bf 1}0{\bf 1}0{\bf 1}0101, 
+10{\bf 1}0{\bf 1}0{\bf 1}01,
+1010{\bf 1}0{\bf 1}0{\bf 1} и
+{\bf 1}010{\bf 1}010{\bf 1}. 
+
+\end{problem}
+

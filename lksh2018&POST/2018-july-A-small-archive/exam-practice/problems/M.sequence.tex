@@ -1,0 +1,65 @@
+% Автор: Максим Ахмедов
+% Источник: APIO 2014, http://olympiads.kz/apio2014/
+
+\begin{problem}{Общая подпоследовательность}
+{sequence.in}{sequence.out}
+{1 секунда}{256 мегабайт}{}
+
+\begin{flushright}
+{\it
+Спонсор сегодняшней задачи~--- APIO 2014 и Максим Ахмедов
+}
+\end{flushright}
+
+% You are playing a game with a sequence of n non-negative integers. In this game you have to split the
+% sequence into k + 1 non-empty parts. To obtain k + 1 parts you repeat the following steps k times:
+Вы играетесь с последовательностью $n$ неотрицательных целых чисел.
+Цель игры -- разбить последовательность на $k+1$ непустую часть ($k+1$ отрезок).
+Чтобы получить $k+1$ часть вы $k$ раз делаете следующие шаги:
+
+% 1. Choose any part with more than one element (initially you have only one part – the whole sequence).
+% 2. Split it between any two elements to get two new non-empty parts.
+\begin{enumerate}
+\item Выбeрите часть, содержащую больше одного элемента (изначально у вас ровно одна часть -- вся последовательность).
+\item Разбейте выбранную часть на две не пустых части.
+\end{enumerate}
+
+При разбиении части на две вы получаете число очков, равное произведению сумм элементов в полученных новых частях.
+Задача -- максимизировать итоговое число очков.
+
+% Each time after these steps you gain the number of points which is equal to product of sums of elements
+% of each new part. You want to maximize the total number of points you gain.
+
+\InputFile
+
+Первая строка содержит $n$ и $k$ ($k + 1 \le n$, $2 \le n \le 100\,000$, $1 \le k \le \min(n - 1, 200)$).
+Вторая строка содержит $n$ неотрицательные целых чисел $a_1, a_2, \dots, a_n$ ($0 \le a_i \le 10^4$) -- сама последовательность.
+
+% The first line of the input file contains two integers n and k (k + 1 ≤ n). The second line of input contains
+% n non-negative integers a 1 , a 2 , . . . , a n (0 ≤ a i ≤ 10 4 ) – the sequence.
+
+\OutputFile
+
+На первой строке выведите $m$ -- максимальное число очков.
+На второй строке выведите $k$ чисел от $1$ до $n-1$ -- позиции элементов, после которых нужно
+проводить разделения, чтобы в итоге набрать $m$ очков.
+Если есть несколько таких последовательностей разделений, выведите любую.
+
+% On the first line output the largest total number of points you can gain. On the second line output k
+% integers between 1 and n − 1 — the positions of elements after which you have to split the sequence to
+% gain the largest total number of points. If there are more than one way to gain the largest number of
+% points output any one of them.
+
+\Examples
+
+\begin{example}
+\exmp{
+7 3
+4 1 3 4 0 2 3
+}{
+108
+1 3 5
+}%
+\end{example}
+
+\end{problem}

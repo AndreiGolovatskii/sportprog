@@ -1,0 +1,71 @@
+% Source: SPb SU + SPb AU contest, Petrozavodsk, summer 2015
+\gdef\thisproblemauthor{Sergey Kopeliovich}
+\gdef\thisproblemdeveloper{Anton Gulikov}
+
+\begin{problem}{Two Strings}
+{\textsl{standard input}}{\textsl{standard output}}
+{2.5 seconds}{768 mebibytes}{}
+
+You are given two strings $S = S_{0} S_{1} \cdots S_{|S| - 1}$
+and $T = T_{0} T_{1} \cdots T_{|T| - 1}$ consisting of lowercase letters.
+Here $|S|$ is the length of the string $S$.
+
+The substring $S[l, r]$ ($0 \le l \le r < |S|$) of the string
+$S = S_{0} S_{1} \cdots S_{|S|-1}$ is the string $S_{l} S_{l+1} \cdots S_{r}$.
+
+Define the function $F (S, l, r)$ for the string $S$ and two integers $l, r$
+as follows:
+$$F (S, l, r) = r - l - \max (l, |S| - r - 1) + 1\text{.}$$ 
+In other words, $F$ is the length of the substring
+minus the maximum distance from borders of $S$ to the substring.
+
+Your task is to find a substring $S[l, r]$ such that it occurs
+in $T$ as substring and the value $F (S, l, r)$ is maximum
+among all pairs $(l, r)$ ($0 \le l \le r < |S|$).
+
+\InputFile
+
+The first two lines contain strings $S$ and $T$, respectively
+($1 \leq |S|, |T| \leq 10^6$).
+
+Strings $S$ and $T$ consist of lowercase English letters.
+
+\OutputFile
+
+If no substring of string $S$ occurs in the string $T$,
+print a single string ``\texttt{$-1$~$-1$}'' (without quotes).
+Otherwise, print two integers $l$ and $r$ such that $F (S, l, r)$
+is maximum among all possible pairs $(l, r)$ ($0 \le l \le r < |S|$)
+and $S[l, r]$ is a substring of $T$.
+If there are several possible pairs,
+print the lexicographically smallest one.
+
+\Examples
+
+\begin{example}
+\exmp{%
+riveragesmalir
+toaxernaturaln
+}{%
+4 5
+}%
+\exmp{%
+aaaaa
+aaaaa
+}{%
+0 4
+}%
+\exmp{%
+amkar
+zenit
+}{%
+-1 -1
+}%
+\end{example}
+
+\Note
+
+Pair $(l_1, r_1)$ is lexicographically less than pair $(l_2, r_2)$
+if either $l_1 < l_2$, or $l_1 = l_2$ and $r_1 < r_2$. 
+
+\end{problem}

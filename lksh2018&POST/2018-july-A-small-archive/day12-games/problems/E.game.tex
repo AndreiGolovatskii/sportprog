@@ -1,0 +1,66 @@
+\begin{problem}{Игры на графе}{game.in}{game.out}{3 seconds}{64 megabytes}
+
+% src : Andrew Stankevich Contest 21, Thursday, August 31, 2006
+% Author: Andrew Stankevich
+
+Коля и Петя любят играть в следующую игру на лекциях по теории сложности.
+Они рисуют двудольный граф $G$ на листке бумаги и ставят фишку в одну из вершин графа.
+Далее они ходят по очереди, Коля ходит первым.
+% Nick and Peter like to play the following game when attending their complexity theory 
+% lectures. They draw an undirected bipartite graph $G$ on a sheet of paper, and put a token
+% to one of its vertices. After that they make moves in turn. Nick moves first.
+
+Ход состоит из перемещения фишки по ребру в графе.
+После перемещения фишки вершина, из которой фишка только что ушла, удаляется из графа вместе со всеми инцидентными ей рёбрами.
+Проигрывает игрок, который не может ходить.
+% A move consists of moving the token along the graph edge. After it
+% the vertex where the token was before the move, together with all edges incident to it,
+% are removed from the graph. The player who has no valid moves loses the game.
+
+Вам дан граф, который нарисовали Коля и Петя.
+Для каждой вершины графа определите, кто выиграет, если изначально фишка находится в этой вершине.
+Предполагайте, что и Коля, и Петя играют оптимально.
+% You are given the graph that Nick and Peter have drawn. For each vertex o
+% the graph find out who wins if the token is initially placed in that vertex. 
+% Assume that both Nick and Peter play optimally.
+
+\InputFile
+
+Первая строка файла содержит три целых числа $n_1$, $n_2$, $m$ -- число вершин в одной доли, второй доли и число рёбер, соответственно
+($1 \le n_1, n_2 \le 500$, $0 \le m \le 50\,000$).
+Следующие $m$ строк описывают рёбра графа -- каждая срока содержит номера вершин, которые рёбро соединяет.
+Вершины в каждой из долей нумеруются с $1$.
+% The first line of the input file contains three integer numbers $n_1$, $n_2$, and $m$ --- the
+% number of vertices in each part, and the number of edges, 
+% respectively ($1 \le n_1, n_2 \le 500$, $0 \le m \le 50\,000$).
+% The following $m$ lines describe edges --- each line contains the numbers of vertices
+% connected by the corresponding edge. Vertices in each part are numbered independently,
+% starting from 1. 
+
+\OutputFile
+
+Выведите две строке. На первой строке выведите $n_1$ символов, $i$-й символ должен быть '\t{N}',
+если при начале игры из $i$-й вершины первой доли выиграет Коля, или '\t{P}', если выиграет Петя.
+Аналогично во второй строке выведите $n_2$ символов -- результаты игры для второй доли графа.
+% Output two lines. The first line must contain $n_1$ characters, the $i$-th character
+% must be `\t{N}' in case Nick wins if the token is initially placed in the $i$-th
+% vertex of the first part, and `\t{P}' if Peter does. The second line must contain
+% $n_2$ characters and describe the second part in the same way.
+
+\Example
+
+\begin{example}
+\exmp{
+3 3 5
+1 1
+1 2
+1 3
+2 1
+3 1
+}{
+NPP
+NPP
+}%
+\end{example}
+
+\end{problem}

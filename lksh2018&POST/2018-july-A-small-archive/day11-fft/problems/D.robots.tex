@@ -1,0 +1,79 @@
+\begin{problem}{ДНК роботов}{robots.in}{robots.out}{2 секунды}{256 мегабайт}
+
+%\begin{problem}{Robots' DNA}
+
+% Author: ??
+
+Последние достижения в технологии синтеза ДНК позволили
+провести эксперимент по созданию биороботов.
+%New inventions in DNA building technology allowed to conduct
+%the greatest experiment in building biological robots.
+%It was done
+%by scientists from Research Institute of Given Strings (RIGS).
+
+Для облегчения задачи создания ПО для управления роботами
+было принято решение, что их ДНК будет состоять из $M=2^n$ символов
+для некоторого $n\ge 2$.
+Кроме этого, по техническим причинам это будет не обычная строка,
+а циклическая, то есть её можно начинать читать с любой позиции.
+%The DNA of these robots was selected to have
+%$M=2^n$ characters for some $n\ge 2$. This was done for simplifying
+%the management software. Moreover, for technical reasons the Robots' DNA
+%is not an ordinary string, but a cyclic one, so it can be read
+%from an arbitrary position.
+
+Одной из целей эксперимента является изучение мутаций биороботов.
+В результате продолжительных наблюдений было найдено много различных
+видов роботов.
+Для понимания процесса мутации учёным необходимо решить следующую задачу.
+Для ДНК двух роботов требуется определить коэффициент их похожести.
+Он вычисляется, как максимальное количество совпадающих символов
+при наилучшем совмещении этих ДНК.
+Чем больше символов совпадает, тем лучше совмещение.
+%One interesting thing to be investigated during this experiment is the 
+%behaviour of Robots' mutations. After a long time, there have been
+%found some different kinds of robots. To reconstruct the mutation tree,
+%scientists from RIGS need to solve one particular task. Namely,
+%they need to compute the \emph{similarity coefficient} of two Robots' DNAs.
+%The similarity coefficient is the number of matching letters
+%in the best alignment of two given DNAs. The more
+%letters match, the better is alignment.
+
+Требуется написать программу, которая найдёт наилучшее совмещение двух ДНК.
+%You need to write a program that will find the best alignment.
+
+\InputFile
+
+В первой строке входного файла записано одно число $M$ ($4\le M\le 131072$).
+В следующих двух строках записаны ДНК двух роботов.
+Обе ДНК --- строки, состоящие ровно из $M$ символов из множества
+\{`\texttt{A}', `\texttt{C}', `\texttt{G}', `\texttt{T}'\}.
+%The first line of the input contains one integer $M$ ($4\le M\le 131\,072$).
+%The next two lines are the DNAs to be investigated. Both of them consist of
+%exactly $M$ characters from the set `\texttt{A}', `\texttt{C}', `\texttt{G}'
+%and `\texttt{T}'.
+
+\OutputFile
+
+В выходной файл выведите два числа --- максимальное количество
+совпадающих символов и значение оптимального сдвига ---
+неотрицательное количество символов второй ДНК, которые необходимо
+перенести из конца строки в её начало для достижения наилучшего совмещения.
+%You must output the value of the best alignment and the optimal shift.
+%The value is the number of matching characters, and the shift is the (non-zero)
+%number of terminating characters of second DNA to be appended to the
+%beginning of it to get the best alignment.
+
+\Example
+
+\begin{example}
+\exmp{
+16
+ACGTACGTACGTACGT
+CGTACGTACGTACGTC
+}{
+15 1
+}%
+\end{example}
+
+\end{problem}

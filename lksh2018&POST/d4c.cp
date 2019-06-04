@@ -1,0 +1,321 @@
+
+/**
+ * Author: Sergey Kopeliovich (Burunduk30@gmail.com)
+ */
+
+#define VERSION "0.1.5"
+
+#include <cassert>
+#include <cstdio>
+#include <algorithm>
+
+/** Fast allocation */
+
+#ifdef FAST_ALLOCATOR_MEMORY
+int allocator_pos = 0;
+char allocator_memory[(int)FAST_ALLOCATOR_MEMORY];
+inline void * operator new ( size_t n ) {
+    char *res = allocator_memory + allocator_pos;
+    allocator_pos += n;
+    assert(allocator_pos <= (int)FAST_ALLOCATOR_MEMORY);
+    return (void *)res;
+}
+inline void operator delete ( void * ) noexcept { }
+//inline void * operator new [] ( size_t ) { assert(0); }
+//inline void operator delete [] ( void * ) { assert(0); }
+#endif
+
+/** Fast input-output */
+
+template <class T = int> inline T readInt();
+inline double readDouble();
+inline int readUInt();
+inline int readChar(); // first non-blank character
+inline void readWord( char *s );
+inline bool readLine( char *s ); // do not save '\n'
+inline bool isEof();
+inline int getChar();
+inline int peekChar();
+inline bool seekEof();
+inline void skipBlanks();
+
+template <class T> inline void writeInt( T x, char end = 0, int len = -1 );
+inline void writeChar( int x );
+inline void writeWord( const char *s );
+inline void writeDouble( double x, int len = 0 );
+inline void flush();
+
+static struct buffer_flusher_t {
+    ~buffer_flusher_t() {
+        flush();
+    }
+} buffer_flusher;
+
+/** Read */
+
+static const int buf_size = 4096;
+
+static unsigned char buf[buf_size];
+static int buf_len = 0, buf_pos = 0;
+
+inline bool isEof() {
+    if (buf_pos == buf_len) {
+        buf_pos = 0, buf_len = fread(buf, 1, buf_size, stdin);
+        if (buf_pos == buf_len)
+            return 1;
+    }
+    return 0;
+}
+
+inline int getChar() {
+    return isEof() ? -1 : buf[buf_pos++];
+}
+
+inline int peekChar() {
+    return isEof() ? -1 : buf[buf_pos];
+}
+
+inline bool seekEof() {
+    int c;
+    while ((c = peekChar()) != -1 && c <= 32)
+        buf_pos++;
+    return c == -1;
+}
+
+inline void skipBlanks() {
+    while (!isEof() && buf[buf_pos] <= 32U)
+        buf_pos++;
+}
+
+inline int readChar() {
+    int c = getChar();
+    while (c != -1 && c <= 32)
+        c = getChar();
+    return c;
+}
+
+inline int readUInt() {
+    int c = readChar(), x = 0;
+    while ('0' <= c && c <= '9')
+        x = x * 10 + c - '0', c = getChar();
+    return x;
+}
+
+template <class T>
+inline T readInt() {
+    int s = 1, c = readChar();
+    T x = 0;
+    if (c == '-')
+        s = -1, c = getChar();
+    else if (c == '+')
+        c = getChar();
+    while ('0' <= c && c <= '9')
+        x = x * 10 + c - '0', c = getChar();
+    return s == 1 ? x : -x;
+}
+
+inline double readDouble() {
+    int s = 1, c = readChar();
+    double x = 0;
+    if (c == '-')
+        s = -1, c = getChar();
+    while ('0' <= c && c <= '9')
+        x = x * 10 + c - '0', c = getChar();
+    if (c == '.') {
+        c = getChar();
+        double coef = 1;
+        while ('0' <= c && c <= '9')
+            x += (c - '0') * (coef *= 1e-1), c = getChar();
+    }
+    return s == 1 ? x : -x;
+}
+
+inline void readWord( char *s ) {
+    int c = readChar();
+    while (c > 32)
+        *s++ = c, c = getChar();
+    *s = 0;
+}
+
+inline bool readLine( char *s ) {
+    int c = getChar();
+    while (c != '\n' && c != -1)
+        *s++ = c, c = getChar();
+    *s = 0;
+    return c != -1;
+}
+
+/** Write */
+
+static int write_buf_pos = 0;
+static char write_buf[buf_size];
+
+inline void writeChar( int x ) {
+    if (write_buf_pos == buf_size)
+        fwrite(write_buf, 1, buf_size, stdout), write_buf_pos = 0;
+    write_buf[write_buf_pos++] = x;
+}
+
+inline void flush() {
+    if (write_buf_pos) {
+        fwrite(write_buf, 1, write_buf_pos, stdout), write_buf_pos = 0;
+        fflush(stdout);
+    }
+}
+
+template <class T>
+inline void writeInt( T x, char end, int output_len ) {
+    if (x < 0)
+        writeChar('-'), x = -x;
+    
+    char s[24];
+    int n = 0;
+    while (x || !n)
+        s[n++] = '0' + x % 10, x /= 10;
+    while (n < output_len)
+        s[n++] = '0';
+    while (n--)
+        writeChar(s[n]);
+    if (end)
+        writeChar(end);
+}
+
+inline void writeWord( const char *s ) {
+    while (*s)
+        writeChar(*s++);
+}
+
+inline void writeDouble( double x, int output_len ) {
+    if (x < 0)
+        writeChar('-'), x = -x;
+    int t = (int)x;
+    writeInt(t), x -= t;
+    writeChar('.');
+    for (int i = output_len - 1; i > 0; i--) {
+        x *= 10;
+        t = std::min(9, (int)x);
+        writeChar('0' + t), x -= t;
+    }
+    x *= 10;
+    t = std::min(9, (int)(x + 0.5));
+    writeChar('0' + t);
+}
+
+#include <set>
+#include <cstdio>
+#include <ctime>
+#include <vector>
+#include <map>
+#include <iostream>
+#include <stack>
+#include <math.h>
+
+using namespace std;
+#define pii pair<int, int>
+#define x first
+#define y second
+#define dl long double
+#define ll long long
+const int MN = 5 * 10 + 17;
+
+pii operator-(const pii &a, const pii &b) {
+    return {a.x - b.x, a.y - b.y};
+}
+ll cr_pr(const pii &a, const pii &b) {
+    return (ll)a.x * b.y - (ll)a.y * b.x;
+}
+ll dsq(const pii &a) {
+    return (ll)a.x * a.x + (ll)a.y * a.y;
+}
+
+int n;
+pair<pii, int> in[MN];
+int pos[MN];
+int ans[MN][MN];
+pair<pii, pii> polar[MN * MN];
+pii s;
+pii OX = {1, 0};
+dl sq(const dl &a) {
+    return (dl)a * a;
+}
+
+dl dist(const pii &a) {
+    return ((dl)s.y * a.x - (dl)s.x * a.y) / (sqrt(sq(s.x) + sq(s.y)));
+}
+dl dist(const pii &a, const pii &k, const pii &d1) {
+    return ((dl)k.y * a.x - (dl)k.x * a.y - d1.x * k.y + d1.y * k.x) / (sqrt(sq(k.x) + sq(k.y)));
+}
+
+bool cmp(const pair<pii, int> &a, const pair<pii, int> &b) {
+    return dist(a.x) < dist(b.x);
+}
+
+bool cmpPol(const pair<pii, pii> &a, const pair<pii, pii> &b) {
+    bool upa = cr_pr(OX, a.x) > 0, upb = cr_pr(OX, b.x) > 0;
+    if(upa == upb) {
+        return cr_pr(a.x, b.x) > 0;
+    } else {
+        return upa;
+    }
+}
+
+
+dl res = 0;
+dl calc(int i, int j) {
+    dl h = dist(in[pos[ans[i][j]]].x, in[pos[i]].x - in[pos[j]].x, in[pos[i]].x);
+    pii dv = in[pos[i]].x - in[pos[j]].x;
+    dl d = sqrt(dv.x * dv.x + dv.y * dv.y);
+    dl a = d * h / 2;
+    return a;
+}
+
+void sol(){
+    int it = 0;
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            if(i == j) continue;
+            polar[it++] = {in[i].x - in[j].x, {i, j}};
+        }
+    }
+    sort(polar, polar + it, cmpPol);
+    
+    s = polar[0].x;
+    sort(in, in + n, cmp);
+    
+    for(int i = 0; i < n; ++i) {
+        pos[in[i].y] = i;
+    }
+    
+    for(int i = 0; i < it; ++i) {
+        pii ij = polar[i].y;
+        ans[ij.x][ij.y] = in[n - 1].y;
+        int poss1 = pos[ij.x], poss2 = pos[ij.y];
+        swap(pos[ij.x], pos[ij.y]);
+        swap(in[poss1], in[poss2]);
+    }
+    
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            if(i == j) continue;
+            res = max(res, calc(i, j) + calc(j, i));
+        }
+    }
+}
+
+
+
+int main() {
+    assert(freopen("input.txt", "r", stdin));
+    assert(freopen("output.txt", "w", stdout));
+    
+    
+    
+    n = readInt();
+    for(int i = 0; i < n; ++i) {
+        in[i].x.x = readInt();
+        in[i].x.y = readInt();
+        in[i].y = i;
+    }
+    sol();
+    writeDouble(res);
+}

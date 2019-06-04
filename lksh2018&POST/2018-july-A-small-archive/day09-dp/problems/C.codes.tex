@@ -1,0 +1,72 @@
+\begin{problem}{Order-Preserving Codes}{codes.in}{codes.out}{2 seconds}{256 mb}
+
+%Author: Classic, see Knuth
+
+Binary code is a mapping of characters of some alphabet to the set of
+finite length bit sequences. For example, standard ASCII code is a fixed 
+length code, where each character is encoded using 8 bits.
+
+Variable length codes are often used to compress texts taking
+into account the frequencies of occurence of different characters.
+Characters that occur more often get shorter codes, while characters
+occuring less often --- longer ones.
+
+To ensure unique decoding of variable length codes so called
+\emph{prefix codes} are usually used. In a prefix code no code
+sequence is a proper prefix of another sequence. Prefix code
+can be easily decoded scanning the encoded sequence from left to
+right, since no code is the prefix of another, one always knows
+where the code for the current character ends and the new character
+starts.
+
+Among prefix codes, the optimal code is known, so called 
+Huffman code. It provides the shortest possible length of the 
+text among all prefix codes that separatly encode each 
+character with an integer number of bits.
+
+However, as many other codes, Huffman code does not preserve
+character order. That is, Huffman codes for lexicographically ordered
+characters are not necessarily lexicographicaly ordered.
+
+In this problem you are asked to develop a prefix code
+that would be optimal for the given text among all order-preserving 
+prefix codes. Code is called
+order-preserving if for any two characters the code sequence 
+for the character that goes earlier in the alphabet is 
+lexicographically smaller. 
+
+Since text itself is not essential for finding the code,
+only the number of occurences of each character is important,
+only this data is given.
+
+\InputFile
+
+The first line of the input file contains $n$ --- the number
+of characters in the alphabet ($2 \le n \le 2000$). The
+next line contains $n$ integer numbers --- the number of 
+occurences of the characters in the text for which the 
+code must be developed (numbers are positive and do not
+exceed $10^9$). Characters are described in the alphabetical 
+order.
+
+\OutputFile
+
+Output $n$ bit sequences, one on a line --- the optimal
+order-preserving prefix code for the described text.
+
+\Example
+
+\begin{example}
+\exmp{
+5
+1 8 2 3 1
+}{
+00
+01
+10
+110
+111
+}%
+\end{example}
+
+\end{problem}

@@ -1,0 +1,59 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>План лекций</title>
+  <link href=styles/styles.css rel="stylesheet" type="text/css">
+</head>
+<h2>ЛКШ 2018, 1-й день, LCA, RMQ, LA, Euler-Tour (Сергей Копелиович)</h2>
+<ol>
+  <li>LCA, RMQ: простое</li>
+  <ol>
+    <li>LCA двоичными подъёмами: два способа; проверка "является ли предком"</li>
+    <li>RMQ разреженными таблицами: [nlogn, 1]</li>
+<br>
+  </ol></li>
+  <li>LCA, RMQ: возможно, новое</li>
+  <ol>
+    <li>Улучшаем sparse table до [nloglogn, 1] и [n, loglogn], рекурсивно замыкаем</li>
+    <li>Решение RMQ&pm;1 за [n, 1] четырьмя русскими</li>
+    <li>RMQ &rarr; LCA &rarr; RMQ&pm;1 (Построение Декартового дерева, Эйлеров обход)</li>
+    <li>Другое использование Эйлерова обхода: функция от поддерева</li>
+<br>
+  </ol></li>
+  <li>LA</li>
+  <ol>
+    <li>LA.Offline</li>
+    <li>LA.Online [O(n), O(logn)] &minus; алгоритм Вишкина</li>
+    <li>LA.Online [O(nlogn), O(1)] &minus; лестничная декомпозиция</li>
+    <li><i><span style="color: blue;">[skipped] </span>LA.Online [O(n), O(1)] &minus; добавляем эйлеров обход и 4 русских</i></li>
+  </ol></li>
+</ol>
+<font color=blue><b>&minus; Перерыв &minus;</b></font>
+
+<ol>
+  <li>LCA: алгоритм Тарьяна.</li>
+<br>
+  <li>Дерево отрезков снизу</li>
+  <ol>
+    <li>Описание, запросы get, change</li>
+    <li>Сравнение с реализацией сверху</li>
+<br>
+  </ol></li>
+  <li>Задачи</li>
+  <ol>
+    <li>+= на отрезке через сумму на отрезке</li>
+    <li>Сумма на пути дерева = префиксные суммы</li>
+    <li>Сумма на пути, изменение в ребре = эйлеров обход, рёбра с разными знаками</li>
+    <li>Сумма на пути, изменение в вершине = два эйлеровых обхода (по времени входа, по времени выхода)</li>
+    <li>Биекция между вершинами и рёбрами</li>
+    <li>Сумма на пути, += на пути : все пути во всех запросах до корня</li>
+    <li>Минимум на пути в дереве без изменений в offline : через сортировку рёбер и СНМ</li>
+    <li>Минимум на пути в дереве без изменений в offline : через сортировку запросов и СНМ</li>
+<br>
+  </ol></li>
+  <li><i><span style="color: blue;">[skipped] </span>Дополнительное</i></li>
+  <ol>
+    <li><i><span style="color: blue;">[skipped] </span>RMQ.Offline: напрямую без RMQ &rarr; LCA</i></li>
+    <li><i><span style="color: blue;">[skipped] </span>Disjoint Sparse Table</i></li>
+    <li><i><span style="color: blue;">[skipped] </span>Задача: даны два подвешенных дерева, номера вершин различны, запрос &minus; найти размер пересечения двух поддеревьев</i></li>
+  </ol></li>
+</ol>

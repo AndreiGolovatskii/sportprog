@@ -1,0 +1,24 @@
+$ ЛКШ.2018.Июль.A Расписание лекций
+
+SK = <font color="#008800"><code>[SK]</code></font>
+DN = <font color="#000088"><code>[DN]</code></font>
+IP = <font color="#aa0000"><code>[IP]</code></font>
+link = <code>[*]</code>
+
+# $SK$ @link:$link$:day01-lca.html Структуры данных 1
+# $DN$ @link:$link$:day02-persistent.html Структуры данных 2 (персистентность)
+# $SK$ @link:$link$:day03-ds.html Структуры данных 3
+# $IP$ @link:$link$:day04-geom.html Геометрия
+# $DN$ @link:$link$:day05-flow.html Потоки 1
+# $SK$ @link:$link$:day06-flow.html Потоки 2
+# <span style="color: red">Выходной</span>
+# $IP$ @link:$link$:day07-strings.html Строки 1
+# $SK$ @link:$link$:day08-strings.html Строки 2
+# $DN$ Оптимизации к динамике
+# <span style="color: red">Олимпиада</span>
+# $DN$ @link:$link$:day10-ds.html Структуры данных 4
+# <span style="color: red">Выходной</span>
+# $SK$ @link:$link$:day11-fft.html Фурье
+# $SK$ @link:$link$:day12-games.html Игры
+# $SK$+$IP$ @link:$link$:day13-approx.html Приближённые алгоритмы
+

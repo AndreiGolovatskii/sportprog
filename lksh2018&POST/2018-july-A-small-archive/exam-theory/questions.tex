@@ -1,0 +1,229 @@
+\documentclass[11pt]{article}
+
+\usepackage{polyglossia}
+
+\usepackage{amsmath, amssymb}
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref}
+%\usepackage[russian]{hyperref}
+\usepackage{datetime}
+\usepackage{cmap}
+\usepackage{enumerate}
+\usepackage{hologo}
+%\usepackage{minted}
+%\usepackage{unicode-math}
+\usepackage{color}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{CMU Serif}  
+\setsansfont[Mapping=tex-text]{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}  
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+
+\makeatletter
+\renewcommand{\@oddfoot}{}
+\renewcommand{\@oddhead}{}
+
+\sloppy
+\voffset=-45mm
+\textheight=265mm
+\hoffset=-28mm
+\textwidth=190mm
+
+% Основные математические символы
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\heart}{\mathalpha}{extraup}{86}
+\def\EPS{\varepsilon}    %
+\def\SO{\Rightarrow}     % =>
+\def\EQ{\Leftrightarrow} % <=>
+\def\t{\texttt}          %
+\def\O{\mathcal{O}}      %
+\def\NO{\t{\#}}          % #
+\newcommand{\q}[1]{\langle #1 \rangle}               % <x>
+\newcommand\URL[1]{{\footnotesize{\url{#1}}}}        %
+\newcommand{\sfrac}[2]{{\scriptstyle\frac{#1}{#2}}}  % Очень маленькая дробь
+\newcommand{\mfrac}[2]{{\textstyle\frac{#1}{#2}}}    % Небольшая дробь
+
+% Отступы
+\def\makeparindent{\hspace*{\parindent}}
+\def\up{\vspace*{-\baselineskip}}
+\def\down{\vspace*{\baselineskip}}
+\def\LINE{\vspace*{-1em}\noindent \underline{\hbox to 1\textwidth{{ } \hfil{ } \hfil{ } }}}
+
+\newcounter{myenumi}
+\setcounter{myenumi}{0}
+
+\newenvironment{MyList}{
+  \begin{enumerate}[1.]
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{2pt}
+  \setcounter{enumi}{\arabic{myenumi}}
+  %\hspace*{1em}%
+}{
+  \setcounter{myenumi}{\arabic{enumi}}
+  \end{enumerate}
+}
+\newenvironment{InnerMyList}{
+  \vspace*{-0.5em}
+  \begin{enumerate}[a)]
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt}
+}{
+  \end{enumerate}
+}
+
+\def\Header#1{
+  \vspace*{0.1em}
+  {\color{blue} \large \bf #1}
+  \vspace*{0.2em}
+}
+
+\definecolor{mygray}{rgb}{0.7,0.7,0.7}
+\definecolor{ltgray}{rgb}{0.9,0.9,0.9}
+\definecolor{fixcolor}{rgb}{0.7,0,0}
+\definecolor{red2}{rgb}{0.7,0,0}
+\definecolor{dkred}{rgb}{0.4,0,0}
+\definecolor{dkblue}{rgb}{0,0,0.6}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{brown}{rgb}{0.7,0.7,0}
+
+\newcommand{\green}[1]{{\color{green}{#1}}}
+\newcommand{\black}[1]{{\color{black}{#1}}}
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\dkred}[1]{{\color{dkred}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\newcommand{\dkgreen}[1]{{\color{dkgreen}{#1}}}
+
+% Отступы для списков
+\newlength{\ShiftLength}\setlength{\ShiftLength}{2.3em}
+\newcommand{\leftLabel}[2][]{%
+  \ifthenelse{\equal{#1}{}}{%
+    {\hspace*{-\ShiftLength}\makebox[0pt][r]{\color{black}{#2}}\hspace*{\ShiftLength}}%
+  }{%
+    {\hspace*{-\ShiftLength}\makebox[0pt][r]{\color{#1}{#2}}\hspace*{\ShiftLength}}%
+  }%
+}
+
+\def\EXT{\leftLabel[red]{\t{+}}}
+
+% \def\Hard{\leftLabel[red2]{$\bullet$}}
+% \def\Medium{\leftLabel[brown]{$\bullet$}}
+% \def\Easy{\leftLabel[dkgreen]{$\bullet$}}
+\def\Hard{\leftLabel[red2]{$(c)$}}
+\def\Medium{\leftLabel[brown]{$(b)$}}
+\def\Easy{\leftLabel[dkgreen]{$(a)$}}
+
+\begin{document}
+
+\vspace*{0.0em}
+\begin{center}
+{\Large \bf Вопросы к экзамену по алгоритмам и структурам данных\\ \vspace*{0.5em} ЛКШ.2018.Июль, группа А}
+\end{center}
+\vspace*{0.4em}
+
+% Кроме конспектов полезно смотреть \href{http://acm.math.spbu.ru/~sk1/courses/1718s_au/practice/}{разборы} задач с практик и из дз.
+%Курсивом помечено то, что было разобрано на практике.
+
+\Header{Структуры данных}
+
+%\begin{tabular}{ll} & \parbox{17cm}{
+\begin{MyList}
+
+% \item \Easy   \parbox{0.85cm}{BST.} Определение, add/del/prev/next/lower\_bound, использование списка и хеш-таблицы.\\
+%               \parbox{0.85cm}{\ } Обработка равных ключей.
+\item DS. Дерево отрезков с операциями снизу. Выражение \t{+=} на отрезке через изменение в точке.
+\item DS. Sparse table. Disjoint версия. Улучшение до $\q{n \log\log n, 1}$ и $\q{n, \log\log n}$.
+\item DS. RMQ $\to$ LCA $\to$ RMQ{$\pm$}1, решение последнего за $\q{n, 1}$.
+\item DS. LCA и RMQ в offline за $\O((n+m)\alpha)$.
+\item DS. LA за $\q{n, \log n}$ (Вишкин), за $\q{n \log n, 1}$ (лестничная декомпозиция)
+\item DS. Сумма и минимум на пути дерева, веса меняются/не меняются. Функция от поддерева.
+\item DS. Задача: сумма на пути дерева, \t{+=} в поддереве, оба запроса online за $\O(\log n)$.
+\item DS. HLD и Centoid для функций на пути дерева; HLD для функции от поддерева.
+\item DS. Сканирующая прямая: сумма в прям-ке, площадь $\cup$ прям-ков, сумма в $\triangle$.
+\item DS. Сканирующая прямая: локализация точки в мн-ке, сумма в полуплоскости.
+\item DS. Число различных на отрезке, $k$-я статистика на отрезке.
+\item DS. Персистентность: стек, Д.О., СНМ, очередь, декартово дерево.
+\item DS. Корневая: split/rebuild, split/merge, отложенные операции (sorted array)
+\item DS. Задача: memmove за $\O(\log n)$. Варианты сборки мусора: счетчик ссылок, стек.
+\item DS. DCP в offline за $\O(m^{3/2})$, за $\O(m \log^2 m)$, за $\O(m \log m)$.
+\item DS. ETT. Splay. Link-Cut.
+\item DS. Мо. 3D-Мо. Мо на дереве. Мо без лога. Мо в космосе. Новые приключения Мо.
+\item DS. Fractional cascading: для Д.О. сортированных массивов, для бинпоиска по $k$ массивам.
+\item DS. Дерево Ли-Чао (dynamic convex hull trick).
+\item DS. Идеи: $\sum\max \to \min$ (поворот на 45); параллельные бинпоиски.
+
+\end{MyList}
+%}\\\end{tabular}
+
+\Header{Алгоритмы}
+
+%\begin{tabular}{ll} & \parbox{17cm}{
+\begin{MyList}
+
+\item Геометрия. Два указателя: две самые дальние, общая касательная.
+\item \parbox{2cm}{Геометрия.} За $\O(\log n)$: проверить, внутри ли; найти опорную прямую, \\
+      \parbox{2cm}{\ } пересечение с прямой, касательные и расстояние.
+\item Геометрия. $\O(\log^2n)$: общая касательная, расстояние между многоугольниками.
+\item Геометрия. Динамическая выпуклая оболочка: только добавление; добавление и удаление.
+\item \parbox{2cm}{Геометрия.} Сумма Минковского: вычисление за $\O(n{+}m)$, \\
+      \parbox{2cm}{\ } расстояние между многоугольниками за $\O(n{+}m)$.
+\item Геометрия. Сумма Минковского: применение для поиска пути на карте с препятствиями.
+
+\item Потоки. Теорема и алгоритм Форда-Фалкерсона. Вершинный разрез в ор и неор графах.
+\item Потоки. Алгоритмы Эдмондса Карпа и масштабирования. LR-Поток.
+\item Потоки. Задачи: восстановление матрицы, восстановление результатов турнира, 
+\item Потоки. Поиск паросочетания, вершинного покрытия, вершинного покрытия min веса. 
+\item Потоки. Диниц. Диниц с масштабированием. Диниц с link-cut, Диниц в раю.
+\item Потоки. Каразанов. Хопкрофт-Карп. Диниц на единичных сетях.
+\item Потоки. Mincost k-flow: решение Форд-Беллманом, Дейкстрой с потенциалами.
+\item Потоки. Mincost circultation: сведенией к ней k-flow, алгоритм Клейна, capacity scaling.
+\item Потоки. Задача: выбор k непересекающихся $\uparrow$ подпосл-тей $\sum len_i \to \max$ за $\O(kn^2)$.
+
+\pagebreak
+\vspace*{2em}
+
+\item Строки. Сжатый и не сжатый бор -- способы хранения. 
+\item Строки. Алгоритм Ахо-Корасика. Для каждого словарного слова найти число вхождений.
+\item Строки. Суффиксный массив за $\O(n \log n)$ и за $\O(n)$. LCP за $\O(n)$.
+\item Строки. Суффиксное дерево Укконеном за $\O(n)$. Массив $\leftrightarrow$ дерево за $\O(n)$.
+\item Строки. Задачи на дерево и массив: общая подстрока, число подстрок, поиск подстроки в тексте, LZSS.
+\item Строки. Дерево Палиндромов
+\item DP. Разделяй и властвуй за $\O(k n \log n)$. Кнут за $\O(n^2)$.
+\item DP. Convex hull trick за $\O(k n \log n)$ и $\O(k n)$.
+\item DP. Лямбда-оптимизация. Получения числа (но не восстановление ответа) за $\O(n \log C)$.
+\item DP. Выбор состояния и измельчения перехода на примере задачи про погрузку кораблей.
+\item \parbox{0.6cm}{DP.} Битовая магия: гамильтонов путь, сумма элементов для каждого множества.\\ 
+      \parbox{0.6cm}{\ } Префиксная магия: сумма подмножеств для каждого подмножества.
+\item DP. Рюкзак. На отрезке. С bitset. С корневой. Когда $i$-го предмета можно брать $k_i$.
+\item FFT. Просто длинка: что мы умеем за $\O(n/k)$, что за $\O(n^2/k^2)$, двоичная арифметика: mul/div/gcd.
+\item FFT. Комплексные числа. Корни из $1$. Схема умножения. Прямое и обратное преобразования.
+\item FFT. Нерекурсивная реализация и предподсчёт корней. Выбор системы счисления.
+\item FFT. Задачи: скалярное произведение, поиск шаблона в тексте, умножение по модулю $m \le 10^9$.
+\item Игры. Ацикличный граф через DP. Граф с циклами и длина игры через ретроанализ.
+\item Игры. Вычисление Функции Гранди за $\O(E)$. Ним. Прямая сумма игр.
+\item Игры. 0-1-игра и min-max-игра на дереве. $\alpha\beta$-отсечение.
+\item Approx. Vertex cover, MAX-3-SAT, TSP, Set-Cover.
+\item Approx. Рюкзаки: partition, knapsack, bin packing.
+\item Паросочетание в произвольном графе.
+\end{MyList}
+%}\\\end{tabular}
+
+\Header{Правила}
+
+\vspace*{0.5em}\hspace*{-2em}\parbox{17cm}{
+Вы получаете билет из трёх вопросов (произвольное подмножество этого списка).
+
+Сперва отвечаете всё теорию. 
+
+Если ответить на 1/2/3 вопроса идеально, оценка получается \t{2+}/\t{3+}/\t{4+} соответственно.
+
+Если вы получили \t{4+}, получаете задачу сперва на \t{5-}, затем на \t{5}.
+
+В конце можно пойти отдыхать, можно взять задачу на \t{5+}.
+
+Если вы ответили не идеально, сперва преподавателем определяется ваша оценка за теорию, затем её можно 1-2 раза поднять задачами.
+
+Если вы не можете решить задачу, вы можете её заменить... естественно, это отразится на оценке.
+}
+
+\end{document}

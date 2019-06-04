@@ -1,0 +1,4 @@
+http://dl.acm.org/citation.cfm?id=2052506 [2011'Zhang]
+
+https://sites.google.com/site/indy256/algo_cpp/suffix_array_lcp
+http://pastebin.com/i1gEsM44

@@ -1,0 +1,11 @@
+$ ЛКШ 2018, 13-й день, Приближённые алгоритмы
+
+% https://sistema.lksh.ru/wiki/education/parallel-a/2017-august/
+
+# 1/2 Vertex Cover 
+# 7/8 MAX-3-SAT
+# 2 и 1.5 TSP с неравенством &triangle;-ка
+# ln(n) Set-Cover
+# Рюкзаки: partition, knapsack, bin packing
+# Паросочетание в произвольном графе (история про нечётные циклы и про начало Куном)
+
